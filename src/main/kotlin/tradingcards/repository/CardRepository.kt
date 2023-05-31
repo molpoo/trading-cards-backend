@@ -1,13 +1,13 @@
 package tradingcards.repository
 
-import kotlinx.coroutines.flow.Flow
-import kotlinx.coroutines.flow.flow
 import tradingcards.model.CardSet
 import tradingcards.model.TradingCardGame
 
 class CardRepository {
 
-    fun cardSets(): List<CardSet> {
+    fun getCardSets(type: String): List<CardSet> {
+        require(getType().any { it.name == type })
+
         return emptyList()
     }
 

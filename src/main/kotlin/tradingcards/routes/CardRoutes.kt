@@ -14,15 +14,12 @@ fun Route.cardRoutes() {
     }
 
     get("/cardsets/{type?}") {
-        val type = call.parameters["type"]
+        val type = call.parameters["type"] ?: ""
 
-        if (type.isNullOrEmpty()) {
+        if (type.isEmpty()) {
             call.respondText("Missing type", status = HttpStatusCode.BadRequest)
         }
 
         call.respond(cardRepository.getCardSets(type))
-
-        // TODO If firebase data is empty, make a call to fill it
-        // TODO Else serve the firebase data
     }
 }
